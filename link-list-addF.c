@@ -1,67 +1,56 @@
-#include <stdio.h>
-#include <stdlib.h>
-struct node
-{
-    int info;
-    struct node *link;
+//linklist add first
+#include<stdio.h>
+#include<stdlib.h>
+
+//create node
+struct Node{
+    int data;
+    struct Node *next;
 };
 
-
-struct node *start = NULL;
-
-
-void display()
-{
-    struct node *q;
-    if (start == NULL)
-        printf("List is empty!!\n");
-    else
-    {
-        printf("Elements in Linked List:\n");
-        q = start;
-        while (q != NULL)
-        {
-            printf("%d\t", q->info);
-            q = q->link;
-        }
+//print linklist
+void LinkListPrint(struct Node *ptr){
+    while(ptr != NULL){
+    printf("|Elements: %d |\n---------------\n",ptr->data);
+    ptr = ptr->next;
     }
 }
 
-int main(void)
-{
-    // setbuf(stdout, NULL);
-    int data,j=1;
-    char ch;
-    struct node *q, *tmp;
+//create node to add at first
+struct Node *InsertAtFirst(struct Node *head,int data){
+    struct Node *ptr = (struct Node *)malloc(sizeof(struct Node));
+    ptr->next = head;
+    ptr->data = data;
+    return ptr;
+}
 
-    for(int i=0;i<j;i++)
-    {
-        printf("Enter an element:\n");
-        scanf("%d", &data);
+int main() {
 
-        
-        tmp = malloc(sizeof(struct node));
-        tmp->info = data;
-        tmp->link = NULL;
+//assign memory 
 
-        if (start == NULL)
-            start = tmp;
-        else
-        {
-            q = start;
-            while (q->link != NULL)
-                q = q->link;
-            q->link = tmp;
-        }
+struct Node *head;
+struct Node *second;
+struct Node *third;
 
-    printf("Do you want to insert more elements? (y/n): ");
-    scanf(" %c",&ch);
-    
-    if(ch == 'y' || ch == 'Y'){
-        j++;
-    }}
+head = (struct Node *)malloc(sizeof(struct Node));
+second = (struct Node *)malloc(sizeof(struct Node));
+third = (struct Node *)malloc(sizeof(struct Node));
 
-    display();
+//assign value and address of next
+head->data= 66;
+head->next = second;
 
-    return 0;
+second->data = 77;
+second->next = third;
+
+third->data = 44;
+third->next = NULL;
+
+printf("link list at first\n");
+LinkListPrint(head);
+head = InsertAtFirst(head, 22);
+printf("link list after insert at first\n\n");
+LinkListPrint(head);
+
+
 }
