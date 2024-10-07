@@ -10,7 +10,7 @@ struct Node{
 //print linkist
 void PrintLinkList(struct Node *ptr){
     while(ptr != NULL){
-    printf("%d\n",ptr->data);
+    printf("|%d|\n----\n",ptr->data);
     ptr = ptr->next;
 }};
 
